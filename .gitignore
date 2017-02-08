@@ -1,0 +1,16 @@
+# Created by .ignore support plugin (hsz.mobi)
+#
+# IntelliJ project files
+.idea
+*.iml
+
+### Node template
+# Logs
+logs
+*.log
+npm-debug.log*
+
+.env
+
+node_modules
+
