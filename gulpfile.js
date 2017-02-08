@@ -10,8 +10,27 @@ const concat = require('gulp-concat');
 const lint = require('gulp-eslint');
 
 
+const fs = require('fs');
+const logger = require('./utils/logger');
+
+try {
+  if (fs.statSync(__dirname + '/.env').isFile()) {
+    console.log('Parsing .env ...');
+    require('dotenv').config();
+
+    // If we're in dev env, log through console and file
+    logger.remove('console-prod');
+    var logdir = './logs';
+    if (!fs.existsSync(logdir)){
+      fs.mkdirSync(logdir);
+    }
+  }
+} catch (e) {
+  console.log('.env not found -- skipping');
+}
+
 const config ={
-  port: 9005,
+  port:  process.env.PORT || 3000,
   devBaseUrl: 'http://localhost',
   path: {
     html: './src/*.html',
