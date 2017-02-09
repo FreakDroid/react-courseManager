@@ -3,6 +3,8 @@
 # IntelliJ project files
 .idea
 *.iml
+*.xml
+_windows
 
 ### Node template
 # Logs
